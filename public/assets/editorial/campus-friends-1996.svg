@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="parkSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DCE4D0" />
+      <stop offset="100%" stop-color="#F4EFE2" />
+    </linearGradient>
+    <linearGradient id="grass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5D7744" />
+      <stop offset="100%" stop-color="#354825" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#parkSky)" />
+  <circle cx="650" cy="110" r="85" fill="#F3E3B8" opacity="0.7" />
+
+  <!-- Trees Canopy -->
+  <circle cx="140" cy="140" r="130" fill="#465D34" opacity="0.85" />
+  <circle cx="290" cy="110" r="110" fill="#556F3F" opacity="0.8" />
+  <rect x="130" y="210" width="28" height="160" fill="#594331" />
+
+  <!-- Campus Lawn -->
+  <path d="M0 330 Q420 300 800 345 L800 600 L0 600 Z" fill="url(#grass)" />
+
+  <!-- Friends Sitting on Grass (Editorial Illustration) -->
+  <g transform="translate(220, 290)">
+    <circle cx="0" cy="0" r="24" fill="#3D2B1F" />
+    <circle cx="0" cy="4" r="20" fill="#DFB995" />
+    <path d="M-36 85 C-36 35 36 35 36 85 Z" fill="#F6F2E9" stroke="#142B53" stroke-width="2.5" />
+    <path d="M-42 85 L45 110 L25 130 L-45 105 Z" fill="#142B53" />
+  </g>
+  <g transform="translate(335, 275)">
+    <circle cx="0" cy="0" r="25" fill="#523A28" />
+    <circle cx="0" cy="4" r="20" fill="#E3C1A0" />
+    <path d="M-36 90 C-36 38 36 38 36 90 Z" fill="#F6F2E9" stroke="#142B53" stroke-width="2.5" />
+    <path d="M-40 90 L40 115 L25 135 L-42 110 Z" fill="#142B53" />
+  </g>
+  <g transform="translate(455, 282)">
+    <circle cx="0" cy="0" r="24" fill="#2B1F17" />
+    <circle cx="0" cy="4" r="20" fill="#D5AD8B" />
+    <path d="M-36 88 C-36 38 36 38 36 88 Z" fill="#F6F2E9" stroke="#142B53" stroke-width="2.5" />
+    <path d="M-38 88 L42 112 L25 132 L-40 108 Z" fill="#142B53" />
+  </g>
+  <g transform="translate(565, 295)">
+    <circle cx="0" cy="0" r="24" fill="#4A3426" />
+    <circle cx="0" cy="4" r="20" fill="#E0BC9B" />
+    <path d="M-36 85 C-36 35 36 35 36 85 Z" fill="#F6F2E9" stroke="#142B53" stroke-width="2.5" />
+    <path d="M-35 85 L40 108 L22 128 L-38 105 Z" fill="#142B53" />
+  </g>
+
+  <rect x="20" y="545" width="380" height="34" rx="6" fill="#142B53" opacity="0.86" />
+  <text x="36" y="567" fill="#F6F2E9" font-family="Georgia, serif" font-size="14">
+    Ilustración artística · Jardines del campus (Demo)
+  </text>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D7CBAF" />
+      <stop offset="60%" stop-color="#EDE4CE" />
+      <stop offset="100%" stop-color="#F6F2E9" />
+    </linearGradient>
+    <linearGradient id="facade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DFC9A3" />
+      <stop offset="100%" stop-color="#B99C70" />
+    </linearGradient>
+    <linearGradient id="lawn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#536841" />
+      <stop offset="100%" stop-color="#2F4023" />
+    </linearGradient>
+    <filter id="sepiaGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.08  0 0 0 0.08 0" />
+      <feComposite in2="SourceGraphic" operator="in" />
+    </filter>
+  </defs>
+
+  <!-- Warm Sepia Sky -->
+  <rect width="800" height="600" fill="url(#sky)" />
+
+  <!-- Distant Hills of Cañaveral / Floridablanca -->
+  <path d="M0 340 Q180 260 390 315 T800 290 L800 420 L0 420 Z" fill="#8C997B" opacity="0.45" />
+
+  <!-- Spanish Roof Tiles -->
+  <polygon points="80,220 750,155 780,195 60,255" fill="#8A3B2B" />
+  <polygon points="80,220 750,155 765,175 68,238" fill="#A54836" />
+
+  <!-- Two-Story Colonial Archway Building -->
+  <rect x="85" y="220" width="675" height="230" fill="url(#facade)" stroke="#8C714A" stroke-width="2" />
+  <rect x="85" y="330" width="675" height="8" fill="#9A7E56" />
+
+  <!-- Upper Floor Arches -->
+  <g fill="#3E3224">
+    <path d="M120 325 V260 A26 26 0 0 1 172 260 V325 Z" />
+    <path d="M205 325 V255 A26 26 0 0 1 257 255 V325 Z" />
+    <path d="M290 325 V250 A26 26 0 0 1 342 250 V325 Z" />
+    <path d="M375 325 V246 A26 26 0 0 1 427 246 V325 Z" />
+    <path d="M460 325 V242 A26 26 0 0 1 512 242 V325 Z" />
+    <path d="M545 325 V238 A26 26 0 0 1 597 238 V325 Z" />
+    <path d="M630 325 V235 A26 26 0 0 1 682 235 V325 Z" />
+  </g>
+
+  <!-- Lower Floor Corridor Arches -->
+  <g fill="#2A2118">
+    <path d="M120 448 V375 A26 26 0 0 1 172 375 V448 Z" />
+    <path d="M205 448 V373 A26 26 0 0 1 257 373 V448 Z" />
+    <path d="M290 448 V371 A26 26 0 0 1 342 371 V448 Z" />
+    <path d="M375 448 V369 A26 26 0 0 1 427 369 V448 Z" />
+    <path d="M460 448 V367 A26 26 0 0 1 512 367 V448 Z" />
+    <path d="M545 448 V365 A26 26 0 0 1 597 365 V448 Z" />
+    <path d="M630 448 V363 A26 26 0 0 1 682 363 V448 Z" />
+  </g>
+
+  <!-- Balustrade Railing Details -->
+  <line x1="100" y1="312" x2="730" y2="300" stroke="#DFC9A3" stroke-width="4" />
+
+  <!-- Tropical Palm Trees -->
+  <!-- Left Palm -->
+  <path d="M145 460 Q132 300 108 150" stroke="#4D3E2D" stroke-width="16" fill="none" stroke-linecap="round" />
+  <g fill="#354A29">
+    <path d="M108 150 Q40 120 10 175 Q65 155 108 150 Z" />
+    <path d="M108 150 Q35 80 15 95 Q70 115 108 150 Z" />
+    <path d="M108 150 Q110 65 155 55 Q135 110 108 150 Z" />
+    <path d="M108 150 Q175 95 215 135 Q155 135 108 150 Z" />
+    <path d="M108 150 Q160 155 190 205 Q140 175 108 150 Z" />
+  </g>
+
+  <!-- Center-Right Tall Palm -->
+  <path d="M435 455 Q445 280 462 120" stroke="#4D3E2D" stroke-width="14" fill="none" stroke-linecap="round" />
+  <g fill="#2F4222">
+    <path d="M462 120 Q395 95 365 140 Q420 125 462 120 Z" />
+    <path d="M462 120 Q415 55 445 40 Q455 85 462 120 Z" />
+    <path d="M462 120 Q515 55 555 85 Q505 95 462 120 Z" />
+    <path d="M462 120 Q535 115 560 165 Q505 135 462 120 Z" />
+  </g>
+
+  <!-- Courtyard Lawn -->
+  <path d="M0 445 Q400 430 800 448 L800 600 L0 600 Z" fill="url(#lawn)" />
+  <path d="M180 600 L350 448 L430 448 L610 600 Z" fill="#C9B38C" opacity="0.65" />
+
+  <!-- Subtle Editorial Watermark Badge -->
+  <rect x="20" y="545" width="350" height="34" rx="6" fill="#142B53" opacity="0.82" />
+  <text x="36" y="567" fill="#F6F2E9" font-family="Georgia, serif" font-size="14" letter-spacing="0.5">
+    Ilustración editorial · Campus histórico (Demo)
+  </text>
+</svg>

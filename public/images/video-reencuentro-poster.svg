@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="sunset" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#142B53" />
+      <stop offset="45%" stop-color="#8B3A2B" />
+      <stop offset="78%" stop-color="#DF9A4F" />
+      <stop offset="100%" stop-color="#F7D08A" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sunset)" />
+  <!-- Golden Sun Glow -->
+  <circle cx="600" cy="440" r="170" fill="#FBE3A4" opacity="0.55" />
+
+  <!-- Silhouette of Friends Embracing Looking Toward Sunset (Matching V2 Bottom Banner & Video Card) -->
+  <g fill="#161215">
+    <!-- Horizon -->
+    <rect x="0" y="560" width="1200" height="115" />
+    <!-- 6 Friends with Arms Around Shoulders -->
+    <circle cx="250" cy="390" r="36" />
+    <path d="M180 570 C180 450 320 450 320 570 Z" />
+
+    <circle cx="385" cy="375" r="38" />
+    <path d="M310 570 C310 440 460 440 460 570 Z" />
+
+    <circle cx="525" cy="365" r="40" />
+    <path d="M445 570 C445 430 605 430 605 570 Z" />
+
+    <circle cx="670" cy="368" r="39" />
+    <path d="M590 570 C590 435 750 435 750 570 Z" />
+
+    <circle cx="810" cy="378" r="37" />
+    <path d="M735 570 C735 445 885 445 885 570 Z" />
+
+    <circle cx="945" cy="392" r="36" />
+    <path d="M875 570 C875 450 1015 450 1015 570 Z" />
+
+    <!-- Connected Arms Across Shoulders -->
+    <path d="M240 448 Q600 420 955 450" stroke="#161215" stroke-width="28" fill="none" stroke-linecap="round" />
+  </g>
+</svg>

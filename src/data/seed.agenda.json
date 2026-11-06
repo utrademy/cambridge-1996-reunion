@@ -1,0 +1,123 @@
+[
+  {
+    "id": "agenda-01",
+    "sort_order": 1,
+    "time_label": "1:15 p. m.",
+    "title": "Preparación y alistamiento",
+    "description": "Llegada anticipada del equipo de fotografía, instalación del backing conmemorativo y puesta a punto de los últimos detalles para recibir a la generación.",
+    "location_detail": "Restaurante escolar · New Cambridge School",
+    "category": "recepcion",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-02",
+    "sort_order": 2,
+    "time_label": "1:30 – 1:45 p. m.",
+    "title": "Bienvenida y recepción",
+    "description": "Encuentro inicial en el restaurante del colegio con limonada de coco con cereza bien fría, primeros abrazos, saludos y fotografías de llegada.",
+    "location_detail": "Restaurante escolar",
+    "category": "recepcion",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-03",
+    "sort_order": 3,
+    "time_label": "1:45 – 2:00 p. m.",
+    "title": "Dinámicas rompehielos",
+    "description": "Dos actividades especiales de integración preparadas por exalumnos de nuestra promoción para romper el hielo y revivir la complicidad del salón.",
+    "location_detail": "Restaurante escolar",
+    "category": "acto",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-04",
+    "sort_order": 4,
+    "time_label": "2:00 – 2:45 p. m.",
+    "title": "Almuerzo especial conmemorativo",
+    "description": "Experiencia gastronómica de tres tiempos para compartir en mesa: sopa de cebolla gratinada, cordon bleu con puré y reducción de vino, y crème brûlée.",
+    "location_detail": "Restaurante escolar",
+    "category": "gastronomia",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-05",
+    "sort_order": 5,
+    "time_label": "2:45 – 3:00 p. m.",
+    "title": "Palabras y video conmemorativo",
+    "description": "Intervención especial en nombre del colegio, mensaje de nuestra promoción y proyección del video conmemorativo de los 30 años (1996 – 2026).",
+    "location_detail": "Restaurante escolar",
+    "category": "acto",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-06",
+    "sort_order": 6,
+    "time_label": "3:00 – 4:00 p. m.",
+    "title": "Recorrido guiado por el colegio",
+    "description": "Caminata por los corredores, arcadas y rincones de nuestra etapa escolar, guiada por estudiantes actuales que son hijos de exalumnos.",
+    "location_detail": "Campus New Cambridge School",
+    "category": "recorrido",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-07",
+    "sort_order": 7,
+    "time_label": "4:00 – 4:15 p. m.",
+    "title": "Fotografías oficiales de la promoción",
+    "description": "Sesión de fotos grupales oficiales de la Class of 1996 para inmortalizar nuestro reencuentro de 30 años.",
+    "location_detail": "Arcadas principales y jardines",
+    "category": "acto",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-08",
+    "sort_order": 8,
+    "time_label": "4:15 – 4:50 p. m.",
+    "title": "Tarde de socialización y reencuentro",
+    "description": "Tiempo libre para conversar sin prisa, recordar anécdotas, tomarnos fotos entre grupos de amigos y despedirnos del campus.",
+    "location_detail": "Jardines y plazoleta central",
+    "category": "recorrido",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-09",
+    "sort_order": 9,
+    "time_label": "4:50 – 5:00 p. m.",
+    "title": "Desplazamiento a portería norte y abordaje",
+    "description": "Caminata grupal hacia la portería norte del colegio, despedida de las instalaciones y abordaje de la chiva rumbera.",
+    "location_detail": "Portería Norte · New Cambridge School",
+    "category": "cierre",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-10",
+    "sort_order": 10,
+    "time_label": "5:00 – 6:00 p. m.",
+    "title": "Partida en Chiva y Papayera",
+    "description": "¡Arranca la celebración sobre ruedas! Recorrido festivo desde el colegio en chiva tradicional acompañada de papayera en vivo y alegría carnavalera rumbo al Club Campestre.",
+    "location_detail": "Ruta Cañaveral → Club Campestre",
+    "category": "acto",
+    "is_tentative": false,
+    "published": true
+  },
+  {
+    "id": "agenda-11",
+    "sort_order": 11,
+    "time_label": "6:00 p. m. – Medianoche",
+    "title": "Gran Fiesta de Reencuentro en Salón Andalucía",
+    "description": "Llegada al Salón Andalucía en el Club Campestre para nuestra gran rumba de egresados: música en vivo, comida, bebidas, hora loca, sorpresas y celebración a lo grande de la mejor Promoción 1996 hasta la medianoche.",
+    "location_detail": "Salón Andalucía · Club Campestre de Bucaramanga",
+    "category": "cierre",
+    "is_tentative": false,
+    "published": true
+  }
+]

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#E6DAC3" />
+  <!-- Sports Court Backdrop -->
+  <rect x="40" y="390" width="720" height="170" fill="#9E5B42" />
+  <line x1="40" y1="430" x2="760" y2="430" stroke="#F6F2E9" stroke-width="4" opacity="0.7" />
+  <!-- Basketball Hoop -->
+  <rect x="590" y="90" width="110" height="75" fill="#F6F2E9" stroke="#142B53" stroke-width="4" />
+  <rect x="625" y="120" width="40" height="30" fill="none" stroke="#A52728" stroke-width="3" />
+  <line x1="645" y1="165" x2="645" y2="390" stroke="#4A5568" stroke-width="8" />
+
+  <!-- Cambridge Team Players in Navy Jerseys with Red Trim -->
+  <g transform="translate(190, 230)">
+    <circle cx="0" cy="0" r="28" fill="#3B281D" />
+    <circle cx="0" cy="5" r="22" fill="#DFB895" />
+    <path d="M-36 160 L-32 42 L32 42 L36 160 Z" fill="#142B53" stroke="#A52728" stroke-width="4" />
+    <text x="0" y="92" text-anchor="middle" fill="#F6F2E9" font-family="Arial, sans-serif" font-weight="bold" font-size="13">CAMBRIDGE</text>
+    <text x="0" y="122" text-anchor="middle" fill="#D9B875" font-family="Georgia, serif" font-weight="bold" font-size="22">96</text>
+  </g>
+  <g transform="translate(320, 218)">
+    <circle cx="0" cy="0" r="28" fill="#4D3526" />
+    <circle cx="0" cy="5" r="22" fill="#E4C1A0" />
+    <path d="M-36 172 L-32 42 L32 42 L36 172 Z" fill="#142B53" stroke="#A52728" stroke-width="4" />
+    <text x="0" y="92" text-anchor="middle" fill="#F6F2E9" font-family="Arial, sans-serif" font-weight="bold" font-size="13">CAMBRIDGE</text>
+    <text x="0" y="122" text-anchor="middle" fill="#D9B875" font-family="Georgia, serif" font-weight="bold" font-size="22">12</text>
+  </g>
+  <g transform="translate(450, 224)">
+    <circle cx="0" cy="0" r="28" fill="#2B1F17" />
+    <circle cx="0" cy="5" r="22" fill="#D6AE8B" />
+    <path d="M-36 166 L-32 42 L32 42 L36 166 Z" fill="#142B53" stroke="#A52728" stroke-width="4" />
+    <text x="0" y="92" text-anchor="middle" fill="#F6F2E9" font-family="Arial, sans-serif" font-weight="bold" font-size="13">CAMBRIDGE</text>
+    <text x="0" y="122" text-anchor="middle" fill="#D9B875" font-family="Georgia, serif" font-weight="bold" font-size="22">07</text>
+  </g>
+  <g transform="translate(575, 232)">
+    <circle cx="0" cy="0" r="28" fill="#453022" />
+    <circle cx="0" cy="5" r="22" fill="#E1BD9C" />
+    <path d="M-36 158 L-32 42 L32 42 L36 158 Z" fill="#142B53" stroke="#A52728" stroke-width="4" />
+    <text x="0" y="92" text-anchor="middle" fill="#F6F2E9" font-family="Arial, sans-serif" font-weight="bold" font-size="13">CAMBRIDGE</text>
+    <text x="0" y="122" text-anchor="middle" fill="#D9B875" font-family="Georgia, serif" font-weight="bold" font-size="22">23</text>
+  </g>
+
+  <!-- Basketball -->
+  <circle cx="385" cy="345" r="24" fill="#C85A28" stroke="#2D1B12" stroke-width="2.5" />
+
+  <rect x="20" y="545" width="390" height="34" rx="6" fill="#142B53" opacity="0.86" />
+  <text x="36" y="567" fill="#F6F2E9" font-family="Georgia, serif" font-size="14">
+    Ilustración artística · Deportes y Juegos 1996 (Demo)
+  </text>
+</svg>

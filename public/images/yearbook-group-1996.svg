@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8DEC8" />
+      <stop offset="100%" stop-color="#CFC0A1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)" />
+
+  <!-- School Corridor Backdrop -->
+  <rect x="40" y="40" width="720" height="360" fill="#DFD2B8" stroke="#B7A27E" stroke-width="2" />
+  <g fill="#4E4132" opacity="0.25">
+    <path d="M90 360 V140 A55 55 0 0 1 200 140 V360 Z" />
+    <path d="M260 360 V140 A55 55 0 0 1 370 140 V360 Z" />
+    <path d="M430 360 V140 A55 55 0 0 1 540 140 V360 Z" />
+    <path d="M600 360 V140 A55 55 0 0 1 710 140 V360 Z" />
+  </g>
+
+  <!-- Stylized Class Group Silhouette in White Polo & Navy Uniform (1996 Yearbook Tribute) -->
+  <!-- Back Row -->
+  <g transform="translate(0, -10)">
+    <!-- 6 Students Back Row -->
+    <g transform="translate(135, 175)">
+      <circle cx="0" cy="0" r="26" fill="#5C4433" />
+      <circle cx="0" cy="4" r="22" fill="#D9B391" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#142B53" />
+    </g>
+    <g transform="translate(240, 168)">
+      <circle cx="0" cy="0" r="27" fill="#3B2B20" />
+      <circle cx="0" cy="4" r="22" fill="#E0BC9B" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#A52728" />
+    </g>
+    <g transform="translate(345, 165)">
+      <circle cx="0" cy="0" r="26" fill="#2A1F18" />
+      <circle cx="0" cy="4" r="22" fill="#D4AC8A" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#142B53" />
+    </g>
+    <g transform="translate(450, 166)">
+      <circle cx="0" cy="0" r="27" fill="#4D3728" />
+      <circle cx="0" cy="4" r="22" fill="#E3C1A0" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#A52728" />
+    </g>
+    <g transform="translate(555, 170)">
+      <circle cx="0" cy="0" r="26" fill="#32241B" />
+      <circle cx="0" cy="4" r="22" fill="#CFA682" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#142B53" />
+    </g>
+    <g transform="translate(660, 176)">
+      <circle cx="0" cy="0" r="26" fill="#473325" />
+      <circle cx="0" cy="4" r="22" fill="#DEB996" />
+      <path d="M-38 95 C-38 45 38 45 38 95 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <polygon points="-10,36 0,54 10,36" fill="#142B53" />
+    </g>
+  </g>
+
+  <!-- Front Row Seated -->
+  <g transform="translate(0, 115)">
+    <g transform="translate(185, 185)">
+      <circle cx="0" cy="0" r="28" fill="#3B2B20" />
+      <circle cx="0" cy="4" r="23" fill="#E2BE9E" />
+      <path d="M-44 120 C-44 52 44 52 44 120 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <rect x="-36" y="115" width="72" height="65" fill="#142B53" />
+    </g>
+    <g transform="translate(295, 180)">
+      <circle cx="0" cy="0" r="28" fill="#59402E" />
+      <circle cx="0" cy="4" r="23" fill="#D8B18E" />
+      <path d="M-44 120 C-44 52 44 52 44 120 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <rect x="-36" y="115" width="72" height="65" fill="#142B53" />
+    </g>
+    <g transform="translate(405, 178)">
+      <circle cx="0" cy="0" r="28" fill="#2A1E17" />
+      <circle cx="0" cy="4" r="23" fill="#E4C2A3" />
+      <path d="M-44 120 C-44 52 44 52 44 120 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <rect x="-36" y="115" width="72" height="65" fill="#142B53" />
+    </g>
+    <g transform="translate(515, 180)">
+      <circle cx="0" cy="0" r="28" fill="#4A3525" />
+      <circle cx="0" cy="4" r="23" fill="#CFA682" />
+      <path d="M-44 120 C-44 52 44 52 44 120 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <rect x="-36" y="115" width="72" height="65" fill="#142B53" />
+    </g>
+    <g transform="translate(620, 185)">
+      <circle cx="0" cy="0" r="28" fill="#38281D" />
+      <circle cx="0" cy="4" r="23" fill="#DFBA98" />
+      <path d="M-44 120 C-44 52 44 52 44 120 Z" fill="#F8F5EE" stroke="#142B53" stroke-width="3" />
+      <rect x="-36" y="115" width="72" height="65" fill="#142B53" />
+    </g>
+  </g>
+
+  <!-- Banner plaque held in front -->
+  <rect x="250" y="435" width="300" height="58" rx="6" fill="#142B53" stroke="#D9B875" stroke-width="3" />
+  <text x="400" y="468" text-anchor="middle" fill="#F6F2E9" font-family="Georgia, serif" font-weight="bold" font-size="24" letter-spacing="2">
+    CLASS OF 1996
+  </text>
+
+  <!-- Demo Disclaimer Pill -->
+  <rect x="20" y="545" width="375" height="34" rx="6" fill="#142B53" opacity="0.86" />
+  <text x="36" y="567" fill="#F6F2E9" font-family="Georgia, serif" font-size="14">
+    Ilustración artística · Anuario 1996 (Ejemplo Demo)
+  </text>
+</svg>

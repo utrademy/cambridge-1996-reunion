@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="aerialSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A6D" />
+      <stop offset="50%" stop-color="#5B7E96" />
+      <stop offset="100%" stop-color="#D7CEB8" />
+    </linearGradient>
+    <linearGradient id="aerialGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#354F2B" />
+      <stop offset="100%" stop-color="#1F3318" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#aerialSky)" />
+  <!-- Lush Valley & Campus Grounds -->
+  <path d="M0 210 Q360 165 720 200 T1200 185 L1200 675 L0 675 Z" fill="url(#aerialGreen)" />
+
+  <!-- Central Courtyard & Spanish Tile Roof Wings (Aerial Perspective matching V2 Video Frame) -->
+  <polygon points="330,310 870,310 930,490 270,490" fill="#4A6B3B" stroke="#C8B48A" stroke-width="6" />
+  <!-- Main North Building -->
+  <polygon points="310,260 890,260 910,320 290,320" fill="#9E4231" stroke="#F0E4CC" stroke-width="3" />
+  <rect x="315" y="320" width="570" height="32" fill="#E5D4B3" />
+  <!-- Left Wing -->
+  <polygon points="220,330 330,330 285,540 175,540" fill="#A84A38" stroke="#F0E4CC" stroke-width="3" />
+  <!-- Right Wing -->
+  <polygon points="870,330 980,330 1025,540 915,540" fill="#A84A38" stroke="#F0E4CC" stroke-width="3" />
+
+  <!-- Central Fountain / Plaza -->
+  <circle cx="600" cy="405" r="42" fill="#D8C59E" stroke="#F6F2E9" stroke-width="4" />
+  <circle cx="600" cy="405" r="24" fill="#4A7C9B" />
+
+  <!-- Vignette Overlay -->
+  <rect width="1200" height="675" fill="#0B1933" opacity="0.22" />
+</svg>
