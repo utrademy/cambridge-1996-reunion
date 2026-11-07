@@ -952,7 +952,7 @@ export default async function HomePage() {
                   </p>
                   <div className="mt-6">
                     <a
-                      href="https://www.newcambridge.edu.co"
+                      href="https://cambridge.edu.co/es/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[#A52728] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#8B1E1F] hover:-translate-y-0.5"
