@@ -6,6 +6,9 @@ export type MediaCategory =
   | "Profesores"
   | "Actividades"
   | "Reencuentro"
+  | "Reencuentro 2026"
+  | "Reunión 2016"
+  | "Reunión 2024"
   | "Campus";
 
 export type VideoSlug = "historia" | "reencuentro";

@@ -1,12 +1,15 @@
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { contentRepository } from "@/lib/contentRepository";
 import { checkRateLimit, submissionSchema } from "@/lib/validation";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
     const forwardedFor = request.headers.get("x-forwarded-for") || "local";
     const ipKey = forwardedFor.split(",")[0].trim() || "local";
-    const limit = checkRateLimit(`sub:${ipKey}`, 6, 60_000);
+    const limit = checkRateLimit(`sub:${ipKey}`, 10, 60_000);
 
     if (!limit.allowed) {
       return NextResponse.json(
@@ -47,6 +50,12 @@ export async function POST(request: Request) {
       consent_privacy_policy: data.consent_privacy_policy,
       allow_download: data.allow_download,
     });
+
+    try {
+      revalidatePath("/", "layout");
+    } catch {
+      // Ignore outside request context
+    }
 
     return NextResponse.json(
       {

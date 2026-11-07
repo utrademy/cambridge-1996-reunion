@@ -32,6 +32,7 @@ export async function uploadDataUrlToVercelBlob(
         authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`,
         "x-api-version": "7",
         "x-content-type": contentType,
+        "x-add-random-suffix": "0",
       },
       body: binary,
     });
@@ -101,7 +102,14 @@ export async function loadJsonStateFromVercelBlob<T>(): Promise<T | null> {
     );
     if (!match?.url) return null;
 
-    const dataRes = await fetch(match.url, { cache: "no-store" });
+    const bustUrl = `${match.url}${match.url.includes("?") ? "&" : "?"}t=${Date.now()}`;
+    const dataRes = await fetch(bustUrl, {
+      cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+      },
+    });
     if (!dataRes.ok) return null;
     return (await dataRes.json()) as T;
   } catch {

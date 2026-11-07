@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { Expand } from "lucide-react";
 import { LightboxModal } from "./LightboxModal";
@@ -13,14 +13,15 @@ const HISTORIA_DEFAULT_ITEMS: MediaAsset[] = [
     year: 1996,
     category: "Compañeros",
     title: "Nuestra Historia — Promoción 1996",
-    caption: "Retrato grupal de nuestra generación en los corredores del colegio.",
+    caption:
+      "Retrato grupal de nuestra generación en los corredores del colegio.",
     decade_tag: "1996 · Nuestra Historia",
     thumb_url: "/images/historia-grupo-1996.png",
     preview_url: "/images/historia-grupo-1996.png",
     width: 504,
     height: 304,
     allow_download: true,
-    is_demo_art: false,
+    is_demo_art: true,
     published: true,
     sort_order: 1,
     rotation_deg: -5,
@@ -32,14 +33,15 @@ const HISTORIA_DEFAULT_ITEMS: MediaAsset[] = [
     year: 1996,
     category: "Compañeros",
     title: "Amigos en los Jardines del Campus (1996)",
-    caption: "Tarde de descanso y amistad en las zonas verdes del New Cambridge School.",
+    caption:
+      "Tarde de descanso y amistad en las zonas verdes del New Cambridge School.",
     decade_tag: "1996 · Jardines",
     thumb_url: "/images/historia-jardin-1996.png",
     preview_url: "/images/historia-jardin-1996.png",
     width: 304,
     height: 192,
     allow_download: true,
-    is_demo_art: false,
+    is_demo_art: true,
     published: true,
     sort_order: 2,
     rotation_deg: 7,
@@ -47,7 +49,7 @@ const HISTORIA_DEFAULT_ITEMS: MediaAsset[] = [
   },
 ];
 
-const GALERIA96_TRIO_ITEMS: MediaAsset[] = [
+const GALERIA96_TRIO_FALLBACKS: MediaAsset[] = [
   {
     id: "v2-gal96-trio-1",
     album_id: "album-1996-anuario",
@@ -61,9 +63,9 @@ const GALERIA96_TRIO_ITEMS: MediaAsset[] = [
     width: 264,
     height: 232,
     allow_download: true,
-    is_demo_art: false,
+    is_demo_art: true,
     published: true,
-    sort_order: 1,
+    sort_order: 20,
     rotation_deg: -7,
     created_at: "2026-10-03T12:00:00.000Z",
   },
@@ -73,16 +75,17 @@ const GALERIA96_TRIO_ITEMS: MediaAsset[] = [
     year: 1996,
     category: "Actividades",
     title: "Selección de Baloncesto — Cambridge 1996",
-    caption: "Equipo femenino de baloncesto con el uniforme oficial del colegio.",
+    caption:
+      "Equipo femenino de baloncesto con el uniforme oficial del colegio.",
     decade_tag: "1996 · Deportes",
     thumb_url: "/images/galeria-96-baloncesto.png",
     preview_url: "/images/galeria-96-baloncesto.png",
     width: 312,
     height: 232,
     allow_download: true,
-    is_demo_art: false,
+    is_demo_art: true,
     published: true,
-    sort_order: 2,
+    sort_order: 21,
     rotation_deg: 2,
     created_at: "2026-10-04T12:00:00.000Z",
   },
@@ -99,9 +102,9 @@ const GALERIA96_TRIO_ITEMS: MediaAsset[] = [
     width: 256,
     height: 216,
     allow_download: true,
-    is_demo_art: false,
+    is_demo_art: true,
     published: true,
-    sort_order: 3,
+    sort_order: 22,
     rotation_deg: 8,
     created_at: "2026-10-05T12:00:00.000Z",
   },
@@ -114,10 +117,65 @@ export function HomePolaroidCluster({
   assets: MediaAsset[];
   variant: "historia" | "galeria1996";
 }) {
+  const [liveAssets, setLiveAssets] = useState<MediaAsset[]>(assets);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const syncLiveHomeMedia = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/admin?scope=public&t=${Date.now()}`, {
+        cache: "no-store",
+      });
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        media96?: MediaAsset[];
+        media2026?: MediaAsset[];
+      };
+      const m96 = Array.isArray(json.media96) ? json.media96 : [];
+      const m26 = Array.isArray(json.media2026) ? json.media2026 : [];
+      // Put real uploaded/approved photos first (1996 then 2026), followed by remaining 1996 items
+      const real96 = m96.filter((m) => !m.is_demo_art);
+      const real26 = m26.filter((m) => !m.is_demo_art);
+      const demo96 = m96.filter((m) => m.is_demo_art);
+      const combined = [...real96, ...real26, ...demo96];
+      if (combined.length > 0) {
+        setLiveAssets(combined);
+      }
+    } catch {
+      // Keep initial assets on network error
+    }
+  }, []);
+
+  useEffect(() => {
+    setLiveAssets(assets);
+  }, [assets]);
+
+  useEffect(() => {
+    syncLiveHomeMedia();
+    const onFocus = () => syncLiveHomeMedia();
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [syncLiveHomeMedia]);
+
+  // Select the 3 featured polaroids for Galería 1996:
+  // Prioritizes the first uploaded/approved real photos, falling back to GALERIA96_TRIO_FALLBACKS
+  const galeriaTrio = useMemo(() => {
+    const realUploaded = liveAssets.filter((m) => !m.is_demo_art);
+    const result: MediaAsset[] = [];
+    for (const item of realUploaded) {
+      if (result.length < 3 && !result.some((r) => r.id === item.id)) {
+        result.push(item);
+      }
+    }
+    for (const fallback of GALERIA96_TRIO_FALLBACKS) {
+      if (result.length < 3) {
+        result.push(fallback);
+      }
+    }
+    return result;
+  }, [liveAssets]);
+
   if (variant === "historia") {
-    const lightboxList = [...HISTORIA_DEFAULT_ITEMS, ...assets];
+    const lightboxList = [...HISTORIA_DEFAULT_ITEMS, ...liveAssets];
     const first = HISTORIA_DEFAULT_ITEMS[0];
     const second = HISTORIA_DEFAULT_ITEMS[1];
 
@@ -136,6 +194,7 @@ export function HomePolaroidCluster({
                 src={first.thumb_url}
                 alt={first.title}
                 fill
+                unoptimized={first.thumb_url.startsWith("data:")}
                 sizes="(max-width: 768px) 80vw, 440px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -159,6 +218,7 @@ export function HomePolaroidCluster({
                 src={second.thumb_url}
                 alt={second.title}
                 fill
+                unoptimized={second.thumb_url.startsWith("data:")}
                 sizes="(max-width: 768px) 55vw, 300px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -181,8 +241,11 @@ export function HomePolaroidCluster({
     );
   }
 
-  // "galeria1996" 3-Polaroid fanned spread matching V2 Navy Galería 1996 section
-  const lightboxList = [...GALERIA96_TRIO_ITEMS, ...assets];
+  // "galeria1996" 3-Polaroid fanned spread showing the first approved/uploaded photos!
+  const lightboxList = [
+    ...galeriaTrio,
+    ...liveAssets.filter((a) => !galeriaTrio.some((t) => t.id === a.id)),
+  ];
   const cardClasses = [
     "-rotate-[5deg] sm:-rotate-[7deg] sm:translate-x-3 z-10",
     "rotate-[2deg] z-20 sm:scale-105",
@@ -192,7 +255,7 @@ export function HomePolaroidCluster({
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-2 items-center py-2">
-        {GALERIA96_TRIO_ITEMS.map((item, idx) => (
+        {galeriaTrio.map((item, idx) => (
           <button
             key={item.id}
             type="button"
@@ -207,6 +270,7 @@ export function HomePolaroidCluster({
                 src={item.thumb_url}
                 alt={item.title}
                 fill
+                unoptimized={item.thumb_url.startsWith("data:")}
                 sizes="(max-width: 640px) 280px, 280px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />

@@ -10,6 +10,7 @@ import {
   MapPin,
   Music,
   PartyPopper,
+  Play,
   Plus,
   Sparkles,
   Utensils,
@@ -20,6 +21,8 @@ import { HomePolaroidCluster } from "@/components/HomePolaroidCluster";
 import { Navbar } from "@/components/Navbar";
 import { VideoPlayerCard } from "@/components/VideoPlayerCard";
 import { contentRepository } from "@/lib/contentRepository";
+
+export const dynamic = "force-dynamic";
 
 function IconBirrete() {
   return (
@@ -132,15 +135,23 @@ const SECTION_INDEX_ITEMS = [
 ];
 
 export default async function HomePage() {
-  const [settings, milestones, media1996, videos, stories, agenda] =
+  const [settings, milestones, media1996, media2026, videos, stories, agenda] =
     await Promise.all([
       contentRepository.getSiteSettings(),
       contentRepository.getHistoryMilestones(),
       contentRepository.getMediaByYear(1996),
+      contentRepository.getMediaByYear(2026),
       contentRepository.getVideos(),
       contentRepository.getStories(),
       contentRepository.getAgenda(),
     ]);
+
+  // Prioritize newly uploaded/approved real photos (both 1996 and 2026) for the Home Page showcase
+  const featuredHomeMedia = [
+    ...media1996.filter((m) => !m.is_demo_art),
+    ...media2026.filter((m) => !m.is_demo_art),
+    ...media1996.filter((m) => m.is_demo_art),
+  ];
 
   const videoHistoria =
     videos.find((v) => v.slug === "historia") || videos[0];
@@ -438,7 +449,7 @@ export default async function HomePage() {
               {/* Right 3 Tilted Polaroid Spread */}
               <div className="lg:col-span-8">
                 <HomePolaroidCluster
-                  assets={media1996}
+                  assets={featuredHomeMedia}
                   variant="galeria1996"
                 />
               </div>
@@ -690,16 +701,19 @@ export default async function HomePage() {
         >
           <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch gap-8">
-              {/* Left Card: Galería 2026 exact V2 preview */}
+              {/* Left Card: Galería 2026 with New Vintage Camera Photo & Creative Ribbon */}
               <div className="lg:col-span-6 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] shadow-md">
                 <div className="grid grid-cols-1 sm:grid-cols-12 items-stretch flex-1">
                   <div className="p-6 sm:col-span-6 flex flex-col justify-between">
                     <div>
-                      <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0E1E38]">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#A52728]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#A52728]">
+                        Encuentros 2016 · 2024 · 2026
+                      </span>
+                      <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-bold text-[#0E1E38]">
                         Galería 2026
                       </h2>
                       <p className="mt-1 text-sm text-[#1F2937]/80">
-                        Las mejores fotos del reencuentro.
+                        Las mejores fotos del reencuentro y nuestras reuniones.
                       </p>
                     </div>
                     <div className="mt-6">
@@ -712,19 +726,29 @@ export default async function HomePage() {
                       </Link>
                     </div>
                   </div>
-                  <div className="relative min-h-[200px] sm:col-span-6">
+                  <div className="relative min-h-[215px] sm:col-span-6 overflow-hidden bg-[#142B53]">
                     <Image
-                      src="/images/galeria-2026-camara.png"
+                      src="/images/galeria-2026-camara.jpg"
                       alt="Galería 2026 — Próximamente después del evento"
                       fill
+                      unoptimized
                       sizes="(max-width: 768px) 100vw, 340px"
-                      className="object-cover object-right"
+                      className="object-cover object-center"
                     />
-                    <div className="absolute bottom-3 right-3 left-3 rounded-lg border border-white/80 bg-[#F6F2E9]/95 px-3.5 py-2.5 text-center shadow-lg backdrop-blur-xs">
-                      <p className="font-serif text-base font-bold text-[#6E1718]">
-                        Próximamente
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0E1E38]/80 via-transparent to-black/35" />
+
+                    {/* Top Creative Ribbon */}
+                    <div className="absolute top-2.5 right-2.5 left-2.5 z-10 flex items-center justify-center gap-1.5 rounded-full border border-[#D9B875]/60 bg-gradient-to-r from-[#A52728] to-[#7A1819] px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white shadow-md">
+                      <Sparkles className="h-3 w-3 text-[#D9B875] shrink-0" />
+                      <span>Próximamente</span>
+                    </div>
+
+                    {/* Bottom Clear Editorial Badge */}
+                    <div className="absolute bottom-2.5 right-2.5 left-2.5 z-10 rounded-lg border border-[#D9B875]/50 bg-[#0E1E38]/90 px-3 py-2 text-center shadow-lg backdrop-blur-md">
+                      <p className="font-serif text-xs sm:text-sm font-bold text-[#D9B875]">
+                        Fotos del Gran Encuentro
                       </p>
-                      <p className="text-[11px] font-bold text-[#111827]">
+                      <p className="text-[11px] font-semibold text-white">
                         Después del evento (19 de Dic. 2026)
                       </p>
                     </div>
@@ -733,7 +757,7 @@ export default async function HomePage() {
                 <div className="h-2.5 w-full bg-gradient-to-r from-[#A52728] via-[#142B53] to-[#0E223D]" />
               </div>
 
-              {/* Right Card: Videos ("Video Conmemorativo 4:36" & "El Reencuentro 2026 8:24") matching V2 */}
+              {/* Right Card: Videos with Ultra-Sharp HD Thumbnails & "PRÓXIMAMENTE" Ribbon */}
               <div className="lg:col-span-6 rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] p-6 shadow-md">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <div>
@@ -742,27 +766,45 @@ export default async function HomePage() {
                     </h2>
                     <div className="mt-1.5 h-[3px] w-10 bg-[#A52728]" />
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#142B53]/10 px-3 py-1 text-xs font-semibold text-[#142B53]">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[#A52728]/10 px-3 py-1 text-xs font-bold text-[#A52728]">
                     <Sparkles className="h-3.5 w-3.5 text-[#A52728]" />
-                    2 Producciones
+                    Próximamente · 2 Producciones
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Link
                     href="/videos/historia"
-                    className="group block rounded-xl border border-[#142B53]/10 bg-[#F6F2E9]/60 p-2.5 transition hover:-translate-y-0.5 hover:shadow-md"
+                    className="group block rounded-xl border border-[#142B53]/15 bg-[#F6F2E9]/70 p-2.5 transition hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-[#0E1E38]">
                       <Image
                         src="/images/video-thumb-historia.png"
                         alt="Video Conmemorativo — Nuestra historia 1996 - 2026"
                         fill
-                        sizes="(max-width: 640px) 90vw, 260px"
+                        unoptimized
+                        sizes="(max-width: 640px) 90vw, 280px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <span className="absolute bottom-1.5 right-1.5 rounded bg-black/75 px-1.5 py-0.5 text-[10px] font-bold text-white">
-                        4:36
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/30" />
+
+                      {/* Top Modern "PRÓXIMAMENTE" Ribbon */}
+                      <div className="absolute top-0 inset-x-0 flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#A52728] via-[#8B1E1F] to-[#142B53] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white shadow">
+                        <Sparkles className="h-3 w-3 text-[#D9B875]" />
+                        <span>Próximamente</span>
+                      </div>
+
+                      {/* Crisp Vector Play Icon */}
+                      <div className="absolute inset-0 flex items-center justify-center pt-3">
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black/55 text-white shadow-md backdrop-blur-xs transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#A52728]">
+                          <Play className="h-4 w-4 fill-current ml-0.5" />
+                        </span>
+                      </div>
+
+                      <span className="absolute bottom-1.5 right-1.5 rounded bg-[#0E1E38]/90 border border-[#D9B875]/40 px-2 py-0.5 text-[10px] font-bold text-[#D9B875]">
+                        {videoHistoria?.is_available
+                          ? videoHistoria.duration_label
+                          : "En preparación"}
                       </span>
                     </div>
                     <p className="mt-2 font-serif text-sm font-bold text-[#0E1E38] group-hover:text-[#A52728]">
@@ -775,18 +817,36 @@ export default async function HomePage() {
 
                   <Link
                     href="/videos/reencuentro"
-                    className="group block rounded-xl border border-[#142B53]/10 bg-[#F6F2E9]/60 p-2.5 transition hover:-translate-y-0.5 hover:shadow-md"
+                    className="group block rounded-xl border border-[#142B53]/15 bg-[#F6F2E9]/70 p-2.5 transition hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-[#0E1E38]">
                       <Image
                         src="/images/video-thumb-reencuentro.png"
                         alt="El Reencuentro 2026 — Así vivimos el gran encuentro"
                         fill
-                        sizes="(max-width: 640px) 90vw, 260px"
+                        unoptimized
+                        sizes="(max-width: 640px) 90vw, 280px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <span className="absolute bottom-1.5 right-1.5 rounded bg-black/75 px-1.5 py-0.5 text-[10px] font-bold text-white">
-                        {videoReencuentro?.duration_label || "8:24"}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/30" />
+
+                      {/* Top Modern "PRÓXIMAMENTE" Ribbon */}
+                      <div className="absolute top-0 inset-x-0 flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#A52728] via-[#8B1E1F] to-[#142B53] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white shadow">
+                        <Sparkles className="h-3 w-3 text-[#D9B875]" />
+                        <span>Próximamente</span>
+                      </div>
+
+                      {/* Crisp Vector Play Icon */}
+                      <div className="absolute inset-0 flex items-center justify-center pt-3">
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-black/55 text-white shadow-md backdrop-blur-xs transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#A52728]">
+                          <Play className="h-4 w-4 fill-current ml-0.5" />
+                        </span>
+                      </div>
+
+                      <span className="absolute bottom-1.5 right-1.5 rounded bg-[#0E1E38]/90 border border-[#D9B875]/40 px-2 py-0.5 text-[10px] font-bold text-[#D9B875]">
+                        {videoReencuentro?.is_available
+                          ? videoReencuentro.duration_label
+                          : "19 Dic. 2026"}
                       </span>
                     </div>
                     <p className="mt-2 font-serif text-sm font-bold text-[#0E1E38] group-hover:text-[#A52728]">

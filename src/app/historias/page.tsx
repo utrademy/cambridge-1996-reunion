@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { contentRepository } from "@/lib/contentRepository";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Recuerdos y Mensajes — Promoción 1996",
   description:

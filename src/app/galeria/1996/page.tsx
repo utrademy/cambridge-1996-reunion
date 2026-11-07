@@ -7,6 +7,8 @@ import { InteractiveGallery } from "@/components/InteractiveGallery";
 import { Navbar } from "@/components/Navbar";
 import { contentRepository } from "@/lib/contentRepository";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Galería 1996 — Anuario y Recuerdos",
   description:

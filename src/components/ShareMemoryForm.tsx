@@ -24,11 +24,12 @@ export function ShareMemoryForm() {
   const [graduationInfo, setGraduationInfo] = useState("Promoción 1996");
   const [title, setTitle] = useState("");
   const [messageContent, setMessageContent] = useState("");
-  const [categorySuggestion, setCategorySuggestion] = useState("Compañeros");
-  const [yearSuggestion, setYearSuggestion] = useState<1996 | 2026>(1996);
+  const [categorySuggestion, setCategorySuggestion] =
+    useState("Reencuentro 2026");
+  const [yearSuggestion, setYearSuggestion] = useState<1996 | 2026>(2026);
   const [consentPublic, setConsentPublic] = useState(false);
   const [consentPrivacy, setConsentPrivacy] = useState(false);
-  const [allowDownload, setAllowDownload] = useState(false);
+  const [allowDownload, setAllowDownload] = useState(true);
   const [honeypot, setHoneypot] = useState("");
 
   const [optimizedImage, setOptimizedImage] =
@@ -37,6 +38,38 @@ export function ShareMemoryForm() {
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successId, setSuccessId] = useState<string | null>(null);
+
+  const handleYearChange = (yr: 1996 | 2026) => {
+    setYearSuggestion(yr);
+    if (yr === 2026) {
+      if (
+        !["Reencuentro 2026", "Reunión 2024", "Reunión 2016"].includes(
+          categorySuggestion
+        )
+      ) {
+        setCategorySuggestion("Reencuentro 2026");
+      }
+    } else {
+      if (
+        !["Compañeros", "Anuario", "Profesores", "Actividades"].includes(
+          categorySuggestion
+        )
+      ) {
+        setCategorySuggestion("Compañeros");
+      }
+    }
+  };
+
+  const handleCategoryChange = (cat: string) => {
+    setCategorySuggestion(cat);
+    if (["Reencuentro 2026", "Reunión 2024", "Reunión 2016"].includes(cat)) {
+      setYearSuggestion(2026);
+    } else if (
+      ["Compañeros", "Anuario", "Profesores", "Actividades"].includes(cat)
+    ) {
+      setYearSuggestion(1996);
+    }
+  };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -73,23 +106,29 @@ export function ShareMemoryForm() {
 
     setSubmitting(true);
     try {
-      const response = await fetch("/api/submissions", {
+      const submissionPayload = {
+        submission_type: submissionType,
+        submitter_name: submitterName,
+        submitter_graduation_info: graduationInfo,
+        title,
+        message_content: messageContent,
+        category_suggestion:
+          submissionType === "story" ? "Recuerdos" : categorySuggestion,
+        year_suggestion: yearSuggestion,
+        media_preview_url: optimizedImage?.previewDataUrl,
+        media_thumb_url: optimizedImage?.thumbDataUrl,
+        consent_public_display: consentPublic,
+        consent_privacy_policy: consentPrivacy,
+        allow_download: allowDownload,
+        honeypot,
+      };
+
+      const response = await fetch("/api/admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          submission_type: submissionType,
-          submitter_name: submitterName,
-          submitter_graduation_info: graduationInfo,
-          title,
-          message_content: messageContent,
-          category_suggestion: categorySuggestion,
-          year_suggestion: yearSuggestion,
-          media_preview_url: optimizedImage?.previewDataUrl,
-          media_thumb_url: optimizedImage?.thumbDataUrl,
-          consent_public_display: consentPublic,
-          consent_privacy_policy: consentPrivacy,
-          allow_download: allowDownload,
-          honeypot,
+          type: "public_submission",
+          payload: submissionPayload,
         }),
       });
 
@@ -117,12 +156,12 @@ export function ShareMemoryForm() {
           ¡Gracias por aportar a la memoria de la Promoción 1996!
         </h2>
         <p className="mt-2 text-sm sm:text-base text-[#111827]/80 max-w-xl mx-auto">
-          Tu contribución ha sido almacenada en la cola privada de moderación (
+          Tu contribución ha sido recibida en la bandeja de moderación (
           <code className="rounded bg-[#142B53]/10 px-2 py-0.5 text-xs font-mono">
             {successId}
           </code>
-          ). El comité organizador la revisará antes de su publicación en las
-          galerías o en la sección de recuerdos.
+          ). En cuanto el comité organizador la apruebe, aparecerá publicada en
+          las galerías del sitio web.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
@@ -135,13 +174,13 @@ export function ShareMemoryForm() {
             }}
             className="min-h-[44px] rounded-md bg-[#A52728] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#8B1E1F]"
           >
-            Enviar otro recuerdo
+            Enviar otra fotografía o recuerdo
           </button>
           <Link
-            href="/historias"
+            href="/galeria/2026"
             className="min-h-[44px] inline-flex items-center rounded-md border border-[#142B53]/25 bg-white px-5 py-2.5 text-sm font-semibold text-[#142B53] hover:bg-[#142B53] hover:text-white"
           >
-            Ver recuerdos publicados
+            Ir a Galería de Encuentros
           </Link>
         </div>
       </div>
@@ -174,8 +213,8 @@ export function ShareMemoryForm() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             { id: "both", label: "Fotografía + Relato" },
-            { id: "story", label: "Solo Relato / Mensaje" },
             { id: "photo", label: "Solo Fotografía" },
+            { id: "story", label: "Solo Relato / Mensaje" },
           ].map((opt) => (
             <button
               key={opt.id}
@@ -240,18 +279,22 @@ export function ShareMemoryForm() {
             htmlFor="yearSuggestion"
             className="block text-sm font-bold text-[#142B53]"
           >
-            Álbum / Época correspondiente
+            Galería destino
           </label>
           <select
             id="yearSuggestion"
             value={yearSuggestion}
             onChange={(e) =>
-              setYearSuggestion(Number(e.target.value) as 1996 | 2026)
+              handleYearChange(Number(e.target.value) as 1996 | 2026)
             }
             className="mt-1.5 w-full rounded-lg border border-[#142B53]/25 bg-white px-3.5 py-2.5 text-sm text-[#111827]"
           >
-            <option value={1996}>Archivo Histórico 1996</option>
-            <option value={2026}>Reencuentro 2026 (30 Años)</option>
+            <option value={2026}>
+              Galería Encuentros y Reuniones (2016 / 2024 / 2026)
+            </option>
+            <option value={1996}>
+              Galería Archivo Histórico 1996 (Colegio)
+            </option>
           </select>
         </div>
 
@@ -260,20 +303,28 @@ export function ShareMemoryForm() {
             htmlFor="categorySuggestion"
             className="block text-sm font-bold text-[#142B53]"
           >
-            Categoría sugerida
+            Álbum / Pestaña sugerida
           </label>
           <select
             id="categorySuggestion"
             value={categorySuggestion}
-            onChange={(e) => setCategorySuggestion(e.target.value)}
+            onChange={(e) => handleCategoryChange(e.target.value)}
             className="mt-1.5 w-full rounded-lg border border-[#142B53]/25 bg-white px-3.5 py-2.5 text-sm text-[#111827]"
           >
-            <option value="Compañeros">Compañeros</option>
-            <option value="Anuario">Anuario</option>
-            <option value="Profesores">Profesores</option>
-            <option value="Actividades">Actividades</option>
-            <option value="Reencuentro">Reencuentro 2026</option>
-            <option value="Recuerdos">Solo Recuerdo Escrito</option>
+            <optgroup label="Encuentros y Reuniones (Galería 2026)">
+              <option value="Reencuentro 2026">Reencuentro 2026</option>
+              <option value="Reunión 2024">Reunión 2024</option>
+              <option value="Reunión 2016">Reunión 2016</option>
+            </optgroup>
+            <optgroup label="Archivo Histórico 1996 (Galería 1996)">
+              <option value="Compañeros">Compañeros (1996)</option>
+              <option value="Anuario">Anuario (1996)</option>
+              <option value="Profesores">Profesores (1996)</option>
+              <option value="Actividades">Actividades (1996)</option>
+            </optgroup>
+            <optgroup label="Muro de Mensajes">
+              <option value="Recuerdos">Solo Recuerdo Escrito</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -292,7 +343,7 @@ export function ShareMemoryForm() {
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Ej. Excursión de último año o entrenamiento en las canchas"
+          placeholder="Ej. Encuentro de amigos o recuerdo de último año"
           className="mt-1.5 w-full rounded-lg border border-[#142B53]/25 bg-white px-3.5 py-2.5 text-sm text-[#111827]"
         />
       </div>
@@ -306,11 +357,11 @@ export function ShareMemoryForm() {
         </label>
         <textarea
           id="messageContent"
-          rows={4}
+          rows={3}
           required
           value={messageContent}
           onChange={(e) => setMessageContent(e.target.value)}
-          placeholder="Escribe aquí la historia detrás de este momento o el mensaje para tus compañeros de la promoción 1996..."
+          placeholder="Escribe aquí una breve descripción de la foto o el mensaje para tus compañeros de la promoción 1996..."
           className="mt-1.5 w-full rounded-lg border border-[#142B53]/25 bg-white px-3.5 py-2.5 text-sm text-[#111827]"
         />
       </div>
@@ -322,12 +373,11 @@ export function ShareMemoryForm() {
             <div>
               <h3 className="flex items-center gap-2 text-sm font-bold text-[#142B53]">
                 <ImagePlus className="h-4 w-4 text-[#A52728]" />
-                <span>Subir Fotografía (Optimización WebP y limpieza EXIF)</span>
+                <span>Subir Fotografía</span>
               </h3>
               <p className="mt-1 text-xs text-[#111827]/75">
-                Generamos automáticamente una versión preview (1600px WebP) y
-                miniatura (480px WebP) sin alterar tu archivo original en tu
-                dispositivo.
+                Selecciona tu fotografía (JPG, PNG o WebP). El sistema genera
+                automáticamente una vista previa optimizada lista para revisión.
               </p>
             </div>
             <label className="inline-flex min-h-[42px] cursor-pointer items-center gap-2 rounded-md bg-[#142B53] px-4 py-2 text-xs font-semibold text-[#F6F2E9] hover:bg-[#1B396E] shrink-0">
@@ -345,9 +395,7 @@ export function ShareMemoryForm() {
           {processingImage && (
             <div className="mt-4 flex items-center gap-2 text-xs font-medium text-[#142B53]">
               <Loader2 className="h-4 w-4 animate-spin text-[#A52728]" />
-              <span>
-                Limpiando metadatos EXIF y generando miniaturas WebP...
-              </span>
+              <span>Optimizando fotografía y preparando vista previa...</span>
             </div>
           )}
 
@@ -369,8 +417,8 @@ export function ShareMemoryForm() {
                 </p>
                 <p className="text-emerald-800 font-medium flex items-center gap-1">
                   <Sparkles className="h-3.5 w-3.5" />
-                  Preview WebP: {optimizedImage.previewSizeKb} KB · Miniatura
-                  WebP: {optimizedImage.thumbSizeKb} KB · EXIF removido
+                  Fotografía lista para enviar ({optimizedImage.previewSizeKb}{" "}
+                  KB)
                 </p>
               </div>
             </div>
@@ -442,7 +490,7 @@ export function ShareMemoryForm() {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
         <p className="flex items-center gap-1.5 text-xs text-[#111827]/70">
           <ShieldCheck className="h-4 w-4 text-[#142B53]" />
-          Los envíos se guardan en cola privada (`pending-private`) antes de
+          Los envíos son revisados por el comité organizador antes de
           publicarse.
         </p>
 

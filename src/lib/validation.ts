@@ -63,28 +63,31 @@ export const submissionSchema = z.object({
     .string()
     .trim()
     .min(2, "Por favor ingresa tu nombre (mínimo 2 caracteres).")
-    .max(100, "El nombre no puede superar 100 caracteres."),
+    .max(150, "El nombre no puede superar 150 caracteres."),
   submitter_graduation_info: z
     .string()
     .trim()
     .min(2, "Indica tu grupo o referencia de la Promoción 1996.")
-    .max(120),
+    .max(200),
   title: z
     .string()
     .trim()
-    .min(3, "Agrega un título breve para tu recuerdo o fotografía.")
-    .max(120, "El título no debe exceder 120 caracteres."),
+    .min(2, "Agrega un título breve para tu recuerdo o fotografía.")
+    .max(200, "El título no debe exceder 200 caracteres."),
   message_content: z
     .string()
     .trim()
-    .min(10, "Cuéntanos un poco más (mínimo 10 caracteres).")
-    .max(1500, "El relato no debe superar 1500 caracteres."),
+    .min(3, "Agrega una breve descripción o mensaje (mínimo 3 caracteres).")
+    .max(3000, "El relato no debe superar 3000 caracteres."),
   category_suggestion: z.enum([
     "Anuario",
     "Compañeros",
     "Profesores",
     "Actividades",
     "Reencuentro",
+    "Reencuentro 2026",
+    "Reunión 2016",
+    "Reunión 2024",
     "Campus",
     "Recuerdos",
   ]),
@@ -104,14 +107,46 @@ export const submissionSchema = z.object({
 
 export const siteSettingsUpdateSchema = z.object({
   reunion_mode: z.enum(["PRE", "POST", "ARCHIVE"]),
-  hero_title: z.string().trim().min(5).max(180),
-  hero_subtitle: z.string().trim().min(5).max(240),
-  central_quote: z.string().trim().min(5).max(260),
-  event_date_label: z.string().trim().min(5).max(120),
-  event_time_range: z.string().trim().min(5).max(120),
-  menu_summary: z.string().trim().min(10).max(500),
+  hero_title: z
+    .string()
+    .trim()
+    .min(2, "El titular principal es muy corto.")
+    .max(500, "El titular principal no debe superar 500 caracteres."),
+  hero_subtitle: z
+    .string()
+    .trim()
+    .min(2, "La bajada del hero es muy corta.")
+    .max(600, "La bajada no debe superar 600 caracteres."),
+  central_quote: z
+    .string()
+    .trim()
+    .min(2, "La frase central es muy corta.")
+    .max(800, "La frase central no debe superar 800 caracteres."),
+  event_date_label: z
+    .string()
+    .trim()
+    .min(2, "La fecha oficial es muy corta.")
+    .max(300, "La fecha oficial no debe superar 300 caracteres."),
+  event_time_range: z
+    .string()
+    .trim()
+    .min(2, "El horario es muy corto.")
+    .max(600, "El horario no debe superar 600 caracteres."),
+  event_location_name: z.string().trim().min(2).max(300).optional(),
+  event_location_address: z.string().trim().min(2).max(400).optional(),
+  menu_summary: z
+    .string()
+    .trim()
+    .min(2, "El detalle del menú es muy corto.")
+    .max(2500, "El detalle del menú no debe superar 2500 caracteres."),
   menu_chef_pending: z.boolean(),
-  tally_url: z.string().url(),
+  tally_url: z
+    .string()
+    .trim()
+    .max(500)
+    .refine((val) => val === "" || /^https?:\/\/.+/i.test(val), {
+      message: "Ingresa un enlace válido que inicie con https://",
+    }),
   tally_verified: z.boolean(),
 });
 

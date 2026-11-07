@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { VideoPlayerCard } from "@/components/VideoPlayerCard";
 import { contentRepository } from "@/lib/contentRepository";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "El Reencuentro 2026 — Aftermovie Oficial",
   description:

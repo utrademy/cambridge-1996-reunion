@@ -1,23 +1,25 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { Camera, Plus } from "lucide-react";
 import { PolaroidCard } from "./PolaroidCard";
 import { LightboxModal } from "./LightboxModal";
 import type { MediaAsset, MediaCategory } from "@/types/cms";
 
-const CATEGORIES_1996: Array<"Todo" | MediaCategory> = [
-  "Todo",
+const CATEGORIES_1996: Array<"Todas" | MediaCategory> = [
+  "Todas",
   "Anuario",
   "Compañeros",
   "Profesores",
   "Actividades",
 ];
 
-const CATEGORIES_2026: Array<"Todo" | MediaCategory> = [
-  "Todo",
-  "Reencuentro",
-  "Compañeros",
-  "Campus",
+const CATEGORIES_2026: Array<"Todas" | MediaCategory> = [
+  "Todas",
+  "Reencuentro 2026",
+  "Reunión 2016",
+  "Reunión 2024",
 ];
 
 export function InteractiveGallery({
@@ -28,20 +30,62 @@ export function InteractiveGallery({
   initialAssets: MediaAsset[];
 }) {
   const categories = year === 1996 ? CATEGORIES_1996 : CATEGORIES_2026;
-  const [selectedCategory, setSelectedCategory] = useState<"Todo" | MediaCategory>("Todo");
+  const [assets, setAssets] = useState<MediaAsset[]>(initialAssets);
+  const [selectedCategory, setSelectedCategory] = useState<
+    "Todas" | MediaCategory
+  >("Todas");
   const [visibleCount, setVisibleCount] = useState(9);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const syncLiveAssets = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/admin?scope=public&t=${Date.now()}`, {
+        cache: "no-store",
+      });
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        media96?: MediaAsset[];
+        media2026?: MediaAsset[];
+      };
+      const latest = year === 1996 ? json.media96 : json.media2026;
+      if (Array.isArray(latest)) {
+        setAssets(latest);
+      }
+    } catch {
+      // Keep initialAssets on offline/network error
+    }
+  }, [year]);
+
+  useEffect(() => {
+    setAssets(initialAssets);
+  }, [initialAssets]);
+
+  useEffect(() => {
+    syncLiveAssets();
+    const onFocus = () => syncLiveAssets();
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [syncLiveAssets]);
+
   const filteredAssets = useMemo(() => {
-    if (selectedCategory === "Todo") return initialAssets;
-    return initialAssets.filter((item) => item.category === selectedCategory);
-  }, [initialAssets, selectedCategory]);
+    if (selectedCategory === "Todas") return assets;
+    return assets.filter((item) => {
+      if (
+        selectedCategory === "Reencuentro 2026" &&
+        (item.category === "Reencuentro 2026" ||
+          item.category === "Reencuentro")
+      ) {
+        return true;
+      }
+      return item.category === selectedCategory;
+    });
+  }, [assets, selectedCategory]);
 
   const displayedAssets = filteredAssets.slice(0, visibleCount);
 
   return (
     <div>
-      {/* Filter Pills Bar matching V2 Galería 1996 Reference */}
+      {/* Filter Pills Bar */}
       <div
         className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-8"
         role="tablist"
@@ -49,6 +93,16 @@ export function InteractiveGallery({
       >
         {categories.map((cat) => {
           const active = selectedCategory === cat;
+          const count =
+            cat === "Todas"
+              ? assets.length
+              : assets.filter((item) =>
+                  cat === "Reencuentro 2026"
+                    ? item.category === "Reencuentro 2026" ||
+                      item.category === "Reencuentro"
+                    : item.category === cat
+                ).length;
+
           return (
             <button
               key={cat}
@@ -59,28 +113,57 @@ export function InteractiveGallery({
                 setSelectedCategory(cat);
                 setVisibleCount(9);
               }}
-              className={`min-h-[42px] rounded-md px-4 py-2 text-sm font-semibold transition-all ${
+              className={`inline-flex min-h-[42px] items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition-all cursor-pointer ${
                 active
                   ? "bg-[#A52728] text-white shadow-sm"
                   : "border border-[#142B53]/20 bg-[#FCFBF7] text-[#142B53] hover:border-[#142B53]/45 hover:bg-white"
               }`}
             >
-              {cat}
+              <span>{cat}</span>
+              {count > 0 && (
+                <span
+                  className={`rounded-full px-1.5 py-0.5 text-[11px] font-bold leading-none ${
+                    active
+                      ? "bg-white/20 text-white"
+                      : "bg-[#142B53]/10 text-[#142B53]"
+                  }`}
+                >
+                  {count}
+                </span>
+              )}
             </button>
           );
         })}
       </div>
 
-      {/* Empty State */}
+      {/* Empty State when no photos uploaded yet */}
       {displayedAssets.length === 0 ? (
-        <div className="rounded-xl border border-[#142B53]/15 bg-[#FCFBF7] p-10 text-center shadow-xs">
-          <p className="font-serif text-xl font-bold text-[#142B53]">
-            Aún no hay fotografías publicadas en la categoría «{selectedCategory}»
+        <div className="rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] p-10 sm:p-12 text-center shadow-xs">
+          <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#142B53]/10 text-[#A52728]">
+            <Camera className="h-6 w-6" />
+          </div>
+          <p className="font-serif text-xl sm:text-2xl font-bold text-[#142B53]">
+            {selectedCategory === "Todas"
+              ? "Aún no se han subido fotografías en esta galería"
+              : `Aún no se han subido fotografías en «${selectedCategory}»`}
           </p>
-          <p className="mt-2 text-sm text-[#111827]/75 max-w-md mx-auto">
-            Puedes explorar otra categoría o compartir tus propias fotografías
-            conmemorativas para revisión del comité organizador.
+          <p className="mt-2 text-sm sm:text-base text-[#111827]/75 max-w-lg mx-auto">
+            Muy pronto iremos publicando las fotografías de{" "}
+            {selectedCategory === "Todas"
+              ? "nuestros encuentros y reuniones"
+              : `«${selectedCategory}»`}
+            . Si tienes fotos de este encuentro, compártelas para que aparezcan
+            aquí tras su aprobación.
           </p>
+          <div className="mt-6">
+            <Link
+              href="/compartir"
+              className="inline-flex min-h-[42px] items-center gap-2 rounded-md bg-[#A52728] px-5 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-[#8B1E1F] transition"
+            >
+              <Plus className="h-4 w-4" />
+              <span>Subir fotografía para este álbum</span>
+            </Link>
+          </div>
         </div>
       ) : (
         <>
