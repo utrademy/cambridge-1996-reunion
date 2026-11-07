@@ -609,9 +609,10 @@ export default async function HomePage() {
                 <div className="relative overflow-hidden rounded-2xl shadow-lg">
                   <div className="relative aspect-[16/9] w-full">
                     <Image
-                      src="/images/encuentro-arcadas.png"
-                      alt="Arcadas y palmeras del New Cambridge School"
+                      src="/images/encuentro-campus-real.jpg"
+                      alt="Entrada principal del New Cambridge School"
                       fill
+                      unoptimized
                       sizes="(max-width: 1024px) 95vw, 620px"
                       className="object-cover"
                     />
