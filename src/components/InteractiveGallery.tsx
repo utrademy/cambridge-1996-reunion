@@ -84,7 +84,7 @@ export function InteractiveGallery({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-7 px-1 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
             {displayedAssets.map((asset, idx) => (
               <PolaroidCard
                 key={asset.id}
