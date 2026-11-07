@@ -191,13 +191,13 @@ export function HomePolaroidCluster({
 
   return (
     <>
-      <div className="mx-auto max-w-[350px] sm:max-w-none grid grid-cols-3 gap-2 sm:gap-2 items-center px-1 sm:px-0 py-2">
+      <div className="mx-auto max-w-[340px] sm:max-w-[520px] lg:max-w-none grid grid-cols-3 gap-2 sm:gap-3 lg:gap-2 items-center px-1 sm:px-0 py-2">
         {GALERIA96_TRIO_ITEMS.map((item, idx) => (
           <button
             key={item.id}
             type="button"
             onClick={() => setActiveIndex(idx)}
-            className={`polaroid-frame group block w-full bg-[#FCFBF7] !p-1.5 !pb-3.5 sm:!p-3 sm:!pb-7 shadow-[0_14px_28px_rgba(0,0,0,0.45)] sm:shadow-[0_20px_42px_rgba(0,0,0,0.45)] text-left transition-all duration-500 active:scale-95 sm:hover:rotate-0 sm:hover:scale-110 hover:z-30 cursor-pointer ${
+            className={`polaroid-frame group block w-full bg-[#FCFBF7] !p-1.5 !pb-3.5 sm:!p-2.5 sm:!pb-5 lg:!p-3 lg:!pb-7 shadow-[0_14px_28px_rgba(0,0,0,0.45)] sm:shadow-[0_20px_42px_rgba(0,0,0,0.45)] text-left transition-all duration-500 active:scale-95 lg:hover:rotate-0 lg:hover:scale-110 hover:z-30 cursor-pointer ${
               cardClasses[idx]
             }`}
             aria-label={`Ver fotografía: ${item.title}`}

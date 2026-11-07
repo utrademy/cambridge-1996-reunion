@@ -61,7 +61,7 @@ export default async function Galeria2026Page() {
               </div>
 
               {/* Right Camera Photograph from V2 Design with "Próximamente" Glass Card */}
-              <div className="relative min-h-[260px] sm:min-h-[320px] lg:col-span-6 overflow-hidden">
+              <div className="relative min-h-[180px] sm:min-h-[240px] lg:min-h-[320px] lg:col-span-6 overflow-hidden">
                 <Image
                   src="/images/galeria-2026-camara.png"
                   alt="Cámara fotográfica Galería 2026"
@@ -72,14 +72,14 @@ export default async function Galeria2026Page() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#FCFBF7] via-[#FCFBF7]/20 to-transparent lg:w-1/3" />
 
                 {settings.reunion_mode === "PRE" ? (
-                  <div className="absolute bottom-5 right-5 left-5 sm:left-auto sm:max-w-[290px] rounded-xl border border-white/80 bg-[#F6F2E9]/95 px-6 py-4 text-center shadow-2xl backdrop-blur-md">
-                    <p className="font-serif text-xl sm:text-2xl font-bold text-[#6E1718]">
+                  <div className="absolute bottom-3 right-3 left-3 sm:bottom-5 sm:right-5 sm:left-auto sm:max-w-[260px] rounded-xl border border-white/80 bg-[#F6F2E9]/95 px-4 py-2.5 sm:px-6 sm:py-4 text-center shadow-2xl backdrop-blur-md">
+                    <p className="font-serif text-lg sm:text-2xl font-bold text-[#6E1718]">
                       Próximamente
                     </p>
-                    <p className="mt-1 text-sm font-bold text-[#111827]">
+                    <p className="mt-0.5 text-xs sm:text-sm font-bold text-[#111827]">
                       Después del evento
                     </p>
-                    <p className="text-sm font-bold text-[#142B53]">
+                    <p className="text-xs sm:text-sm font-bold text-[#142B53]">
                       (19 de Dic. 2026)
                     </p>
                   </div>

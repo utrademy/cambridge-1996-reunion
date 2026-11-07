@@ -748,7 +748,7 @@ export default async function HomePage() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
                   <Link
                     href="/videos/historia"
                     className="group block rounded-xl border border-[#142B53]/10 bg-[#F6F2E9]/60 p-2.5 transition hover:-translate-y-0.5 hover:shadow-md"
