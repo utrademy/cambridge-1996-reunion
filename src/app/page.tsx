@@ -966,12 +966,12 @@ export default async function HomePage() {
 
                 <div className="relative min-h-[260px] sm:min-h-[320px] lg:col-span-5">
                   <Image
-                    src="/images/colegio-new-cambridge-real.jpg"
-                    alt="Fachada del New Cambridge School"
+                    src="/images/nuestro-colegio-letrero-real.jpg"
+                    alt="Fachada principal del New Cambridge School"
                     fill
                     unoptimized
                     sizes="(max-width: 1024px) 100vw, 520px"
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#FCFBF7] to-transparent hidden lg:block" />
                 </div>
