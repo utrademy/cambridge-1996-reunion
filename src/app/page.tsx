@@ -183,10 +183,11 @@ export default async function HomePage() {
                   <div className="polaroid-frame album-tape-top relative w-full -rotate-[5.5deg] bg-[#F7F1E3] p-3 pb-7 shadow-[0_22px_48px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.02]">
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#142B53]/15">
                       <Image
-                        src="/images/campus-archways-1996.png"
-                        alt="Arcadas históricas del New Cambridge School (1996 - 2026)"
+                        src="/images/colegio-new-cambridge-real.jpg"
+                        alt="Fachada del New Cambridge School (1996 - 2026)"
                         fill
                         priority
+                        unoptimized
                         sizes="(max-width: 768px) 85vw, 360px"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
@@ -965,9 +966,10 @@ export default async function HomePage() {
 
                 <div className="relative min-h-[260px] sm:min-h-[320px] lg:col-span-5">
                   <Image
-                    src="/images/nuestro-colegio-fachada.png"
-                    alt="Fachada de arcadas y palmeras del New Cambridge School"
+                    src="/images/colegio-new-cambridge-real.jpg"
+                    alt="Fachada del New Cambridge School"
                     fill
+                    unoptimized
                     sizes="(max-width: 1024px) 100vw, 520px"
                     className="object-cover"
                   />
