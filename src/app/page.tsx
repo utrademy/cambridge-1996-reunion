@@ -494,18 +494,31 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           aria-label="Frase conmemorativa"
-          className="relative bg-[#EFE7D6] py-8 sm:py-10"
+          className="relative bg-[#EFE7D6] pt-8 pb-7 sm:pt-10 sm:pb-9"
         >
+          {/* Top Torn-Paper Edge from Dark Navy Galería 1996 */}
+          <div className="pointer-events-none absolute top-0 inset-x-0 overflow-hidden leading-none">
+            <svg
+              viewBox="0 0 1440 24"
+              preserveAspectRatio="none"
+              className="relative block h-3 sm:h-4 w-full fill-[#0E1E38]"
+            >
+              <path d="M0,0 L1440,0 L1440,10 C1310,18 1150,4 960,14 C720,22 420,4 180,15 C80,19 30,10 0,12 Z" />
+            </svg>
+          </div>
+
           <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
-            <blockquote className="relative inline-flex flex-col sm:flex-row items-center justify-center gap-2">
+            <blockquote className="relative inline-flex items-start justify-center gap-2 sm:gap-3">
               <span
-                className="font-serif text-5xl sm:text-6xl font-bold text-[#A52728] leading-none select-none sm:-mt-4"
+                className="font-serif text-5xl sm:text-6xl font-bold text-[#A52728] leading-none select-none -mt-1 sm:-mt-2"
                 aria-hidden="true"
               >
                 “
               </span>
-              <span className="font-serif italic text-xl sm:text-2xl md:text-[1.65rem] font-medium leading-relaxed text-[#0E1E38]">
-                {settings.central_quote}”
+              <span className="font-serif italic text-xl sm:text-2xl md:text-[1.7rem] font-medium leading-snug text-[#0E1E38]">
+                Las fotografías guardan nuestros rostros.
+                <br className="hidden sm:inline" /> Los recuerdos conservan lo
+                que vivimos juntos.”
               </span>
             </blockquote>
           </div>
@@ -523,55 +536,54 @@ export default async function HomePage() {
         </section>
 
         {/* =====================================================================
-            EL GRAN ENCUENTRO (V2 Visual Layout + Full Updated Schedule:
+            EL GRAN ENCUENTRO (Exact V2 Visual Composition + Full Updated Schedule:
             1:15–5:00 PM Colegio + 5:00–6:00 PM Chiva & Papayera + 6:00 PM–Midnight Fiesta en Andalucía)
            ===================================================================== */}
         <section
           id="el-encuentro"
-          className="scroll-mt-20 bg-ivory-paper pt-10 sm:pt-14 pb-0 overflow-hidden"
+          className="scroll-mt-20 bg-[#F6F2E9] pt-0 pb-4 overflow-hidden"
         >
-          {/* Top Hero Row of El Gran Encuentro matching V2 Left + Right Archways Blend */}
-          <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8">
-              {/* Left: Event Details matching V2 */}
-              <div className="lg:col-span-6 z-10">
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-[#0E1E38]">
+          {/* Full-bleed V2 Visual Hero Composition matching reference image */}
+          <div className="relative mx-auto max-w-[1280px]">
+            {/* Top Area: Left Event Details + Right Blended Archways Photo */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 items-start">
+              {/* Left Column: Event Title, Red Line, Date, Location, Red CTA */}
+              <div className="relative z-20 px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 pb-4 lg:col-span-6">
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-[#0E1E38] leading-tight">
                   El Gran Encuentro
                 </h2>
+                <div className="mt-3 h-[4px] w-16 rounded-full bg-[#A52728]" />
 
-                <div className="mt-5 space-y-3.5">
-                  <div className="flex items-start gap-3">
+                <div className="mt-6 space-y-4">
+                  <div className="flex items-start gap-3.5">
                     <Calendar className="h-5 w-5 text-[#A52728] shrink-0 mt-1" />
                     <div>
                       <p className="text-base sm:text-lg font-bold text-[#0E1E38]">
                         {settings.event_date_label}
                       </p>
-                      <p className="text-sm font-medium text-[#1F2937]/85">
-                        1:30 p. m. – 5:00 p. m. Visita al Colegio · 5:00 p. m. Chiva y Papayera · 6:00 p. m. – Medianoche Fiesta en Club Campestre
+                      <p className="text-xs sm:text-sm font-medium text-[#1F2937]/85">
+                        1:30 p. m. – 5:00 p. m. Colegio · 5:00 p. m. Chiva y Papayera · 6:00 p. m. Fiesta en Andalucía
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3.5">
                     <MapPin className="h-5 w-5 text-[#A52728] shrink-0 mt-1" />
                     <div>
                       <p className="text-base sm:text-lg font-bold text-[#0E1E38]">
                         {settings.event_location_name}
                       </p>
-                      <p className="text-sm text-[#1F2937]/85">
+                      <p className="text-sm sm:text-base text-[#1F2937]/90">
                         {settings.event_location_address}
-                      </p>
-                      <p className="mt-1 text-xs sm:text-sm font-semibold text-[#A52728]">
-                        🎉 6:00 p. m. a Medianoche: Salón Andalucía — Club Campestre
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a
                     href="#programa-del-encuentro"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[#A52728] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#8B1E1F] hover:-translate-y-0.5"
+                    className="inline-flex min-h-[44px] items-center gap-2.5 rounded-lg bg-[#A52728] px-6 py-2.5 text-sm sm:text-base font-semibold text-white shadow-md transition-all hover:bg-[#8B1E1F] hover:-translate-y-0.5"
                   >
                     <span>Ver programa completo</span>
                     <ArrowRight className="h-4 w-4" />
@@ -582,7 +594,7 @@ export default async function HomePage() {
                       href={settings.tally_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-md border border-[#142B53] bg-white px-5 py-2.5 text-sm font-semibold text-[#142B53] hover:bg-[#142B53] hover:text-white transition"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-[#142B53] bg-white px-5 py-2.5 text-sm font-semibold text-[#142B53] hover:bg-[#142B53] hover:text-white transition"
                     >
                       <span>Confirmar asistencia</span>
                       <ExternalLink className="h-4 w-4" />
@@ -591,8 +603,8 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* Right: Exact Courtyard Archways Photograph from V2 with Soft Left Fade */}
-              <div className="lg:col-span-6">
+              {/* Right Column: Seamless Courtyard Archways & Palms Photograph */}
+              <div className="lg:col-span-6 px-4 sm:px-6 lg:px-0 pt-2 lg:pt-8">
                 <div className="relative overflow-hidden rounded-2xl shadow-lg">
                   <div className="relative aspect-[16/9] w-full">
                     <Image
@@ -607,35 +619,16 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Sunset Friends Silhouette Banner + "¡Volvemos a encontrarnos!" Script matching V2 */}
-            <div className="relative mt-8 overflow-hidden rounded-2xl border border-[#142B53]/10 bg-[#F5EFE4] shadow-md">
-              <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-                <div className="relative h-[160px] sm:h-[210px] lg:col-span-8">
-                  <Image
-                    src="/images/encuentro-atardecer-amigos.png"
-                    alt="Generación 1996 reunida al atardecer"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 880px"
-                    className="object-cover object-bottom"
-                  />
-                  <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F5EFE4] to-transparent hidden lg:block" />
-                </div>
-                <div className="p-6 lg:col-span-4 flex flex-col items-center lg:items-end justify-center text-center lg:text-right">
-                  <p className="font-script -rotate-3 text-4xl sm:text-5xl font-bold leading-none text-[#0E1E38]">
-                    ¡Volvemos
-                    <br />a encontrarnos!
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
 
             {/* =================================================================
                 CRONOGRAMA OFICIAL ACTUALIZADO (1:15 PM – MEDIANOCHE)
                ================================================================= */}
             <div
               id="programa-del-encuentro"
-              className="mt-12 mb-14 scroll-mt-24 rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] p-6 sm:p-8 shadow-md"
+              className="mt-10 mb-14 scroll-mt-24 rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] p-6 sm:p-8 shadow-md"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#142B53]/10 pb-5">
                 <div>
@@ -942,7 +935,7 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           id="el-colegio"
-          className="scroll-mt-20 bg-[#EAE2D3] py-14 sm:py-20 border-t border-[#142B53]/10"
+          className="scroll-mt-20 bg-[#EAE2D3] pt-14 sm:pt-20 pb-0 border-t border-[#142B53]/10 overflow-hidden"
         >
           <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden rounded-2xl border border-[#142B53]/15 bg-[#FCFBF7] shadow-lg">
@@ -981,6 +974,43 @@ export default async function HomePage() {
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#FCFBF7] to-transparent hidden lg:block" />
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* =====================================================================
+              CIERRE VISUAL SOBRE EL FOOTER: PNG TRANSPARENTE "¡VOLVEMOS A ENCONTRARNOS!"
+              (Sin zoom, proporción exacta, apoyado directamente sobre el Footer azul marino)
+             ===================================================================== */}
+          <div className="relative mt-10 sm:mt-14 pt-6 overflow-hidden">
+            {/* Warm Golden Sunset Glow Behind the 7 Friends */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 top-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 58% 75% at 38% 85%, rgba(245, 176, 65, 0.52) 0%, rgba(248, 196, 113, 0.28) 45%, rgba(234, 226, 211, 0) 75%)",
+              }}
+            />
+
+            {/* Bottom-Left Crimson Brush Accent matching V2 design */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-0 h-16 w-28 sm:h-24 sm:w-48 opacity-90"
+              style={{
+                background:
+                  "radial-gradient(ellipse 90% 80% at 0% 100%, #A52728 0%, #8B1E1F 45%, transparent 72%)",
+              }}
+            />
+
+            <div className="relative z-20 mx-auto max-w-[1160px] px-2 sm:px-6 -mb-1.5 sm:-mb-2.5">
+              <Image
+                src="/images/volvemos-a-encontrarnos-transparent.png"
+                alt="Generación 1996 abrazada al atardecer — ¡Volvemos a encontrarnos!"
+                width={988}
+                height={166}
+                unoptimized
+                className="block w-full h-auto select-none drop-shadow-[0_4px_12px_rgba(14,30,56,0.12)]"
+              />
             </div>
           </div>
         </section>
