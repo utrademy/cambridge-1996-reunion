@@ -23,7 +23,7 @@ export function PolaroidCard({
   return (
     <div
       style={rotationStyle}
-      className="polaroid-frame album-tape-top group transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] hover:z-20 rounded-[3px]"
+      className="polaroid-frame album-tape-top group !p-2 !pb-4 sm:!p-3 sm:!pb-8 transition-transform duration-300 active:scale-[0.98] sm:hover:rotate-0 sm:hover:scale-[1.02] hover:z-20 rounded-[3px]"
     >
       <button
         type="button"
@@ -36,10 +36,10 @@ export function PolaroidCard({
             src={asset.thumb_url}
             alt={asset.title}
             fill
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
+            sizes="(max-width: 640px) 44vw, (max-width: 1024px) 45vw, 360px"
             priority={priority}
             unoptimized={asset.thumb_url.startsWith("data:")}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 sm:group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end justify-between p-3">
             <span className="rounded bg-[#142B53]/90 px-2.5 py-1 text-xs font-medium text-[#F6F2E9]">

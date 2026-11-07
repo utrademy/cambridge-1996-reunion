@@ -179,8 +179,8 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-4">
               {/* Left Column: Tilted Polaroid with Campus & "1996 - 2026" Overlapping Paper Tag */}
               <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center">
-                <div className="relative w-full max-w-[330px] sm:max-w-[360px] group">
-                  <div className="polaroid-frame album-tape-top relative w-full -rotate-[5.5deg] bg-[#F7F1E3] p-3 pb-7 shadow-[0_22px_48px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.02]">
+                <div className="relative w-full max-w-[240px] sm:max-w-[360px] group">
+                  <div className="polaroid-frame album-tape-top relative w-full -rotate-[3.5deg] sm:-rotate-[5.5deg] bg-[#F7F1E3] !p-2 !pb-5 sm:!p-3 sm:!pb-7 shadow-[0_22px_48px_rgba(0,0,0,0.55)] transition-all duration-500 sm:group-hover:rotate-0 sm:group-hover:scale-[1.02]">
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#142B53]/15">
                       <Image
                         src="/images/colegio-new-cambridge-real.jpg"
@@ -188,14 +188,14 @@ export default async function HomePage() {
                         fill
                         priority
                         unoptimized
-                        sizes="(max-width: 768px) 85vw, 360px"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 240px, 360px"
+                        className="object-cover transition-transform duration-700 sm:group-hover:scale-105"
                       />
                     </div>
                   </div>
                   {/* Overlapping Tilted Paper Tag at Bottom-Left matching V2 Hero */}
-                  <div className="absolute -bottom-3 left-5 z-20 -rotate-[8deg] rounded-[2px] border border-[#142B53]/15 bg-[#F7F1E3] px-5 py-1 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:rotate-0">
-                    <span className="font-script text-2xl sm:text-[1.75rem] font-bold tracking-wider text-[#0E1E38]">
+                  <div className="absolute -bottom-2.5 sm:-bottom-3 left-3 sm:left-5 z-20 -rotate-[6deg] sm:-rotate-[8deg] rounded-[2px] border border-[#142B53]/15 bg-[#F7F1E3] px-3.5 sm:px-5 py-0.5 sm:py-1 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-transform duration-500 sm:group-hover:rotate-0">
+                    <span className="font-script text-xl sm:text-[1.75rem] font-bold tracking-wider text-[#0E1E38]">
                       1996 – 2026
                     </span>
                   </div>
