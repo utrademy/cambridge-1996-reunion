@@ -123,7 +123,7 @@ export function HomePolaroidCluster({
 
     return (
       <>
-        <div className="relative mx-auto w-[86%] max-w-[340px] sm:w-full sm:max-w-[560px] py-2 sm:py-4">
+        <div className="relative mx-auto w-[92%] max-w-[440px] sm:w-full sm:max-w-[560px] py-2 sm:py-4">
           {/* Primary Tilted Polaroid (Top-Left, tilted -5deg with masking tape) */}
           <button
             type="button"
@@ -197,7 +197,7 @@ export function HomePolaroidCluster({
             key={item.id}
             type="button"
             onClick={() => setActiveIndex(idx)}
-            className={`polaroid-frame group mx-auto block w-[78%] max-w-[280px] sm:w-full sm:max-w-none bg-[#FCFBF7] p-2.5 sm:p-3 pb-6 sm:pb-7 shadow-[0_20px_42px_rgba(0,0,0,0.45)] text-left transition-all duration-500 hover:rotate-0 hover:scale-105 sm:hover:scale-110 hover:z-30 cursor-pointer ${
+            className={`polaroid-frame group mx-auto block w-[88%] max-w-[380px] sm:w-full sm:max-w-none bg-[#FCFBF7] p-2.5 sm:p-3 pb-6 sm:pb-7 shadow-[0_20px_42px_rgba(0,0,0,0.45)] text-left transition-all duration-500 hover:rotate-0 hover:scale-[1.04] sm:hover:scale-110 hover:z-30 cursor-pointer ${
               cardClasses[idx]
             }`}
             aria-label={`Ver fotografía: ${item.title}`}

@@ -179,7 +179,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-4">
               {/* Left Column: Tilted Polaroid with Campus & "1996 - 2026" Overlapping Paper Tag */}
               <div className="order-2 lg:order-1 lg:col-span-4 flex justify-center">
-                <div className="relative w-[80%] max-w-[280px] sm:w-full sm:max-w-[360px] group">
+                <div className="relative w-[88%] max-w-[330px] sm:w-full sm:max-w-[360px] group">
                   <div className="polaroid-frame album-tape-top relative w-full -rotate-[5.5deg] bg-[#F7F1E3] p-3 pb-7 shadow-[0_22px_48px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:rotate-0 group-hover:scale-[1.02]">
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#142B53]/15">
                       <Image

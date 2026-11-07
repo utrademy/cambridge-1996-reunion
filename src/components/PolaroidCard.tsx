@@ -30,7 +30,8 @@ export function PolaroidCard({
 
   return (
     <div
-      className={`polaroid-frame album-tape-top group mx-auto w-[82%] max-w-[300px] sm:w-full sm:max-w-[340px] transition-all duration-300 hover:rotate-0 hover:scale-[1.03] hover:z-20 rounded-[3px] ${tiltClass}`}
+      style={{ transform: `rotate(${asset.rotation_deg || 0}deg)` }}
+      className="polaroid-frame album-tape-top group mx-auto w-[88%] max-w-[380px] sm:w-full sm:max-w-none transition-transform duration-300 hover:!rotate-0 hover:scale-[1.03] hover:z-20 rounded-[3px]"
     >
       <button
         type="button"
