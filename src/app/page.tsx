@@ -158,7 +158,7 @@ export default async function HomePage() {
             Center: Protagonist "Class of 1996 / 30 YEARS REUNION" Emblem
             Right: Handwritten Copy + Subtitle + CTA
            ===================================================================== */}
-        <section className="relative overflow-hidden bg-navy-editorial text-[#F6F2E9] pt-8 pb-12 sm:py-14 lg:py-16 border-b border-white/10">
+        <section className="relative overflow-hidden bg-navy-editorial text-[#F6F2E9] pt-8 pb-12 sm:py-14 lg:py-16">
           {/* Crimson Torn-Ribbon Brush Accents in Top-Left & Bottom-Right matching V2 */}
           <div
             className="pointer-events-none absolute -top-10 -left-16 h-44 w-96 -rotate-[14deg] bg-gradient-to-r from-[#A52728] via-[#A52728]/85 to-transparent opacity-90"
@@ -242,7 +242,7 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           aria-label="Índice rápido de secciones"
-          className="relative bg-[#0B1C36] text-[#F6F2E9] pt-2 pb-6"
+          className="relative bg-[#0B1C36] text-[#F6F2E9] pt-2 pb-3"
         >
           <div className="mx-auto max-w-[1280px] px-2 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
@@ -267,17 +267,6 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
-
-          {/* Torn-Paper / Wavy Cream Edge Transition into Nuestra Historia */}
-          <div className="pointer-events-none absolute bottom-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 28"
-              preserveAspectRatio="none"
-              className="relative block h-4 sm:h-6 w-full fill-[#F6F2E9]"
-            >
-              <path d="M0,18 C180,28 320,4 540,14 C760,24 980,6 1220,18 C1340,24 1400,14 1440,16 L1440,28 L0,28 Z" />
-            </svg>
-          </div>
         </section>
 
         {/* =====================================================================
@@ -285,7 +274,7 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           id="nuestra-historia"
-          className="scroll-mt-20 bg-ivory-paper py-12 sm:py-16"
+          className="relative scroll-mt-20 bg-ivory-paper py-12 sm:py-16"
         >
           <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-8">
@@ -364,16 +353,6 @@ export default async function HomePage() {
           id="video-conmemorativo"
           className="relative scroll-mt-20 overflow-hidden bg-[#EAE2D3] py-14 sm:py-20"
         >
-          {/* Top Wavy Divider from Nuestra Historia */}
-          <div className="pointer-events-none absolute top-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 28"
-              preserveAspectRatio="none"
-              className="relative block h-4 sm:h-6 w-full fill-[#F6F2E9]"
-            >
-              <path d="M0,0 L1440,0 L1440,14 C1180,28 860,4 520,18 C260,28 120,10 0,20 Z" />
-            </svg>
-          </div>
 
           {/* Top-Left & Bottom-Right Crimson Diagonal Ribbon Accents matching V2 */}
           <div
@@ -433,17 +412,6 @@ export default async function HomePage() {
           id="galeria-1996"
           className="relative scroll-mt-20 bg-navy-editorial text-[#F6F2E9] py-14 sm:py-20 overflow-hidden"
         >
-          {/* Top Torn/Wave Edge from Video Conmemorativo */}
-          <div className="pointer-events-none absolute top-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 24"
-              preserveAspectRatio="none"
-              className="relative block h-3 sm:h-5 w-full fill-[#EAE2D3]"
-            >
-              <path d="M0,0 L1440,0 L1440,8 C1120,24 780,2 420,16 C180,24 60,8 0,14 Z" />
-            </svg>
-          </div>
-
           <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10">
               {/* Left Copy & Cream Pill Button matching V2 */}
@@ -476,17 +444,6 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Bottom Torn-Paper Transition into Quote Band */}
-          <div className="pointer-events-none absolute bottom-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 28"
-              preserveAspectRatio="none"
-              className="relative block h-4 sm:h-6 w-full fill-[#EFE7D6]"
-            >
-              <path d="M0,14 C240,28 480,4 720,16 C960,28 1200,6 1440,18 L1440,28 L0,28 Z" />
-            </svg>
-          </div>
         </section>
 
         {/* =====================================================================
@@ -495,19 +452,8 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           aria-label="Frase conmemorativa"
-          className="relative bg-[#EFE7D6] pt-8 pb-7 sm:pt-10 sm:pb-9"
+          className="relative bg-[#EFE7D6] py-8 sm:py-10"
         >
-          {/* Top Torn-Paper Edge from Dark Navy Galería 1996 */}
-          <div className="pointer-events-none absolute top-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 24"
-              preserveAspectRatio="none"
-              className="relative block h-3 sm:h-4 w-full fill-[#0E1E38]"
-            >
-              <path d="M0,0 L1440,0 L1440,10 C1310,18 1150,4 960,14 C720,22 420,4 180,15 C80,19 30,10 0,12 Z" />
-            </svg>
-          </div>
-
           <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
             <blockquote className="relative inline-flex items-start justify-center gap-2 sm:gap-3">
               <span
@@ -523,17 +469,6 @@ export default async function HomePage() {
               </span>
             </blockquote>
           </div>
-
-          {/* Bottom Torn-Paper Edge into El Gran Encuentro */}
-          <div className="pointer-events-none absolute bottom-0 inset-x-0 overflow-hidden leading-none">
-            <svg
-              viewBox="0 0 1440 24"
-              preserveAspectRatio="none"
-              className="relative block h-3 sm:h-5 w-full fill-[#F6F2E9]"
-            >
-              <path d="M0,12 C320,24 640,2 960,16 C1180,24 1320,8 1440,14 L1440,24 L0,24 Z" />
-            </svg>
-          </div>
         </section>
 
         {/* =====================================================================
@@ -542,7 +477,7 @@ export default async function HomePage() {
            ===================================================================== */}
         <section
           id="el-encuentro"
-          className="scroll-mt-20 bg-[#F6F2E9] pt-0 pb-4 overflow-hidden"
+          className="relative scroll-mt-20 bg-[#F6F2E9] pt-4 pb-4 overflow-hidden"
         >
           {/* Full-bleed V2 Visual Hero Composition matching reference image */}
           <div className="relative mx-auto max-w-[1280px]">

@@ -8,17 +8,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="relative z-30 bg-[#0E1E38] text-[#F6F2E9] border-t border-[#D9B875]/25">
-      {/* Subtle Torn-Paper Top Edge Over Friends' Backs */}
-      <div className="pointer-events-none absolute -top-2 inset-x-0 overflow-hidden leading-none">
-        <svg
-          viewBox="0 0 1440 16"
-          preserveAspectRatio="none"
-          className="relative block h-2.5 w-full fill-[#0E1E38]"
-        >
-          <path d="M0,10 C240,2 480,14 720,6 C960,0 1200,12 1440,4 L1440,16 L0,16 Z" />
-        </svg>
-      </div>
+    <footer className="relative z-30 bg-[#0E1E38] text-[#F6F2E9]">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8 border-b border-white/15 pb-8">
           {/* Left: New Cambridge School emblem */}
